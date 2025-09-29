@@ -1,0 +1,65 @@
+<div class="header">
+    <div class="jira-info" id="jiraInfo">
+        <img class="jira-avatar hidden" id="jiraAvatar" alt="avatar">
+        <span class="jira-name hidden" id="jiraName"></span>
+        <span class="jira-status" id="jiraStatus">Jira: не авторизован</span>
+    </div>
+    <button id="jiraLoginBtn">🔑 Авторизация в Jira</button>
+</div>
+<div class="repo-grid">
+    <!-- Репозитории будут подгружаться динамически -->
+    <div class="repo-card add-card" id="addRepoBtn">+</div>
+</div>
+
+
+
+<!-- Модалка -->
+<div id="modal" class="modal-overlay hidden">
+    <div class="modal">
+
+        <h3>Добавить репозиторий</h3>
+        <label>Путь:</label>
+        <input type="text" id="repoPath" placeholder="D:/projects/myrepo">
+
+        <label>Проект Jira:</label>
+        <select id="jiraSelect"></select>
+
+        <div class="modal-actions">
+            <button id="saveRepoBtn">Сохранить</button>
+            <button id="cancelBtn">Отмена</button>
+        </div>
+    </div>
+</div>
+
+<!-- Редактировать репозиторий -->
+<div id="editRepoModal" class="modal-overlay hidden">
+    <div class="modal">
+        <h3>Изменить проект Jira</h3>
+        <label>Проект Jira:</label>
+        <select id="editJiraSelect"></select>
+        <div class="modal-actions">
+            <button id="editSaveBtn">Сохранить</button>
+            <button id="editCancelBtn">Отмена</button>
+        </div>
+    </div>
+</div>
+
+<!-- Авторизация в Jira -->
+<div id="jiraModal" class="modal-overlay hidden">
+    <div class="modal">
+        <h3>Авторизация в Jira</h3>
+        <label>Сервер:</label>
+        <input type="text" id="jiraServer" placeholder="https://yourcompany.atlassian.net">
+
+        <label>Логин:</label>
+        <input type="text" id="jiraUsername" placeholder="user@example.com">
+
+        <label>Пароль / API Token:</label>
+        <input type="password" id="jiraPassword" placeholder="••••••••">
+
+        <div class="modal-actions">
+            <button id="jiraSaveBtn">Сохранить</button>
+            <button id="jiraCancelBtn">Отмена</button>
+        </div>
+    </div>
+</div>
