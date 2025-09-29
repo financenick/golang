@@ -42,6 +42,13 @@ type JiraProfile struct {
 	AvatarURL   string
 }
 
+type Commit struct {
+	Hash      string
+	Author    string
+	Date      string
+	Message   string
+}
+
 type App struct {
 	ctx context.Context
 	db  *sql.DB
@@ -359,4 +366,21 @@ func pickAvatar(m map[string]string) string {
 	if v, ok := m["32x32"]; ok { return v }
 	for _, v := range m { return v }
 	return ""
+}
+
+func (a *App) GetRepoCommits(repoID int) []Commit {
+	// Заглушка: возврат тестовых коммитов
+	return []Commit{
+		{Hash: "a1b2c3d", Author: "Alice", Date: "2025-09-01 10:15", Message: "Fix login issue"},
+		{Hash: "d4e5f6a", Author: "Bob", Date: "2025-08-30 14:02", Message: "Refactor user service"},
+		{Hash: "123abcd", Author: "Carol", Date: "2025-08-28 09:45", Message: "Add repository page"},
+	}
+}
+
+func (a *App) GetMergeCandidates(repoID int) []Commit {
+	// Заглушка: возврат тестовых коммитов для мержа
+	return []Commit{
+		{Hash: "9f8e7d6", Author: "Dave", Date: "2025-09-02 11:20", Message: "Feature: Jira profile"},
+		{Hash: "0a1b2c3", Author: "Eve", Date: "2025-09-01 16:55", Message: "Improve project avatars"},
+	}
 }

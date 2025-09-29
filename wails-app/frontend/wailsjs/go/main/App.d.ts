@@ -16,6 +16,10 @@ export function GetJiraProjectAvatar(arg1:string):Promise<string>;
 
 export function GetJiraProjects():Promise<Array<main.JiraProject>>;
 
+export function GetMergeCandidates(arg1:number):Promise<Array<main.Commit>>;
+
+export function GetRepoCommits(arg1:number):Promise<Array<main.Commit>>;
+
 export function GetRepositories():Promise<Array<main.Repository>>;
 
 export function SaveJiraCredentials(arg1:string,arg2:string,arg3:string):Promise<string>;

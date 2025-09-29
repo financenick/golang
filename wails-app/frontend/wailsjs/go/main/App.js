@@ -30,6 +30,14 @@ export function GetJiraProjects() {
   return window['go']['main']['App']['GetJiraProjects']();
 }
 
+export function GetMergeCandidates(arg1) {
+  return window['go']['main']['App']['GetMergeCandidates'](arg1);
+}
+
+export function GetRepoCommits(arg1) {
+  return window['go']['main']['App']['GetRepoCommits'](arg1);
+}
+
 export function GetRepositories() {
   return window['go']['main']['App']['GetRepositories']();
 }

@@ -1,5 +1,23 @@
 export namespace main {
 	
+	export class Commit {
+	    Hash: string;
+	    Author: string;
+	    Date: string;
+	    Message: string;
+	
+	    static createFrom(source: any = {}) {
+	        return new Commit(source);
+	    }
+	
+	    constructor(source: any = {}) {
+	        if ('string' === typeof source) source = JSON.parse(source);
+	        this.Hash = source["Hash"];
+	        this.Author = source["Author"];
+	        this.Date = source["Date"];
+	        this.Message = source["Message"];
+	    }
+	}
 	export class JiraCredentials {
 	    Server: string;
 	    Username: string;

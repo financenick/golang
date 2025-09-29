@@ -1,3 +1,45 @@
-<h1>Репозиторий: Мой проект #1</h1>
-<p>Здесь потом будет таблица коммитов и инструменты слияния.</p>
-<button id="backBtn">⬅ Назад</button>
+<div class="repo-page">
+    <div class="repo-header">
+        <button id="backBtn">⬅ Назад</button>
+        <h2 id="repoTitle">Репозиторий</h2>
+    </div>
+
+    <div class="repo-body">
+        <div class="commits-panel">
+            <h3>Коммиты</h3>
+            <div class="commits-scroll">
+                <table class="commits-table" id="commitsTable">
+                    <thead>
+                        <tr>
+                            <th>Хеш</th>
+                            <th>Автор</th>
+                            <th>Дата</th>
+                            <th>Сообщение</th>
+                        </tr>
+                    </thead>
+                    <tbody></tbody>
+                </table>
+            </div>
+        </div>
+        <div class="commits-panel">
+            <h3>Ожидают слияния</h3>
+            <div class="commits-scroll">
+                <table class="commits-table" id="mergeTable">
+                    <thead>
+                        <tr>
+                            <th>Хеш</th>
+                            <th>Автор</th>
+                            <th>Дата</th>
+                            <th>Сообщение</th>
+                        </tr>
+                    </thead>
+                    <tbody></tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <div class="repo-settings" id="repoSettings">
+        <!-- Здесь будут настройки позже -->
+    </div>
+</div>

@@ -78,6 +78,11 @@ export async function HomePage(navigate) {
                 subtitle.style.color = "#666";
                 subtitle.style.fontSize = "12px";
 
+                // навигация по клику на карточку (кроме кнопок)
+                card.addEventListener("click", () => {
+                    navigate("repo:" + r.ID);
+                });
+
                 card.appendChild(actions);
                 card.appendChild(img);
                 card.appendChild(title);
@@ -297,6 +302,58 @@ export async function HomePage(navigate) {
     }
 
     await refreshJiraStatus();
+
+    return container;
+}
+
+export async function RepoPage(navigate, repoId) {
+    const container = document.createElement("div");
+    container.innerHTML = await loadPage("repo");
+
+    // back button
+    const backBtn = container.querySelector("#backBtn");
+    backBtn.addEventListener("click", () => navigate("home"));
+
+    // title
+    try {
+        const repos = await backend.GetRepositories();
+        const current = (repos || []).find(r => r.ID === repoId);
+        if (current) {
+            container.querySelector("#repoTitle").textContent = current.JiraName || current.Name;
+        }
+    } catch {}
+
+    // load commits
+    try {
+        const commits = await backend.GetRepoCommits(repoId);
+        const tbody = container.querySelector("#commitsTable tbody");
+        tbody.innerHTML = (commits || []).map(c => (
+            `<tr>`+
+            `<td>${c.Hash}</td>`+
+            `<td>${c.Author}</td>`+
+            `<td>${c.Date}</td>`+
+            `<td>${c.Message}</td>`+
+            `</tr>`
+        )).join("");
+    } catch (e) {
+        console.error("Ошибка загрузки коммитов:", e);
+    }
+
+    // load merge candidates
+    try {
+        const merges = await backend.GetMergeCandidates(repoId);
+        const tbody = container.querySelector("#mergeTable tbody");
+        tbody.innerHTML = (merges || []).map(c => (
+            `<tr>`+
+            `<td>${c.Hash}</td>`+
+            `<td>${c.Author}</td>`+
+            `<td>${c.Date}</td>`+
+            `<td>${c.Message}</td>`+
+            `</tr>`
+        )).join("");
+    } catch (e) {
+        console.error("Ошибка загрузки кандидатов на merge:", e);
+    }
 
     return container;
 }

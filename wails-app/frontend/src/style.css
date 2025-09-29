@@ -152,3 +152,76 @@ body {
 }
 
 .hidden { display: none; }
+
+/* repo page */
+.repo-page {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+}
+
+.repo-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 10px 12px;
+    background: #f4f4f4;
+    border-bottom: 1px solid #e5e5e5;
+    flex: 0 0 auto;
+}
+
+.repo-body {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    padding: 16px;
+    flex: 1 1 auto;
+    min-height: 0; /* allow children to shrink for scroll */
+}
+
+.commits-panel {
+    display: flex;
+    flex-direction: column;
+    min-height: 0;
+}
+
+.commits-panel h3 {
+    margin: 0 0 8px 0;
+    flex: 0 0 auto;
+}
+
+.commits-scroll {
+    flex: 1 1 auto;
+    min-height: 0;
+    overflow: auto;
+    border: 1px solid #e5e5e5;
+    border-radius: 6px;
+    background: #fff;
+}
+
+.commits-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.commits-table th, .commits-table td {
+    border-bottom: 1px solid #eee;
+    padding: 8px;
+    text-align: left;
+    font-size: 14px;
+}
+
+.commits-table thead th {
+    position: sticky;
+    top: 0;
+    background: #fafafa;
+    z-index: 1;
+}
+
+.repo-settings {
+    flex: 0 0 auto;
+    padding: 10px 12px;
+    background: #f4f4f4;
+    border-top: 1px solid #e5e5e5;
+}

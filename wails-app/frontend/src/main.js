@@ -1,5 +1,5 @@
 // src/main.js
-import { HomePage } from "./pages.js";
+import { HomePage, RepoPage } from "./pages.js";
 
 const app = document.getElementById("app");
 
@@ -7,12 +7,14 @@ async function navigate(page) {
     app.innerHTML = "Загрузка..."; // можно сделать спиннер
 
     let screen;
-    switch (page) {
-        case "home":
-            screen = await HomePage(navigate);
-            break;
-        default:
-            screen = document.createTextNode("Страница не найдена");
+    if (page === "home") {
+        screen = await HomePage(navigate);
+    } else if (page.startsWith("repo:")) {
+        const idStr = page.split(":")[1];
+        const repoId = parseInt(idStr, 10);
+        screen = await RepoPage(navigate, repoId);
+    } else {
+        screen = document.createTextNode("Страница не найдена");
     }
 
     app.innerHTML = ""; // очищаем
